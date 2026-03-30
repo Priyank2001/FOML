@@ -1,0 +1,17 @@
+
+name: mnist-env
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - jupyterlab        # For running Jupyter Notebooks
+  - numpy             # For matrix and array operations
+  - pandas            # For data manipulation
+  - matplotlib        # For visualizing the MNIST digits and loss curves
+  - scikit-learn      # For standard machine learning utilities and metrics
+  - pytorch           # Core deep learning framework
+  - torchvision       # Contains the MNIST dataset and image transformations
+  - seaborn
+  # - cpuonly           # Remove this line if you have a dedicated NVIDIA GPU
