@@ -22,6 +22,14 @@
   Indian Institute of Science\\
   Bengaluru, India \\
   \texttt{priyank1@iisc.ac.in} \\
+  \\
+  \\
+  %
+  \textbf{Anirudh Phukan} \\
+  Department of Computational Data Sciences\\
+  Indian Institute of Science\\
+  Bengaluru, India \\
+  \texttt{anirudhp@iisc.ac.in} \\
 }
 
 \begin{document}
@@ -75,7 +83,7 @@ We implement a CNN in PyTorch that reshapes the flat 784-dim input back to $1\ti
   \centering
   \includegraphics[width=0.47\linewidth]{figures/accuracy_comparison.pdf}\hfill
   \includegraphics[width=0.47\linewidth]{figures/cv_boxplot.pdf}
-  \caption{Left: single-split accuracy and training time for each model. Right: cross-validation accuracy distribution across folds.}
+  \caption{Left: single-split accuracy for all four models (bar chart); the dashed red line shows training time for the two SVM models only. Right: cross-validation accuracy distribution across folds (SVM: 5-fold; SNN/CNN: 3-fold).}
   \label{fig:results}
 \end{figure}
 
@@ -96,9 +104,9 @@ Both deep learning models operate on raw scaled pixels (784-dim), but the CNN ad
 
 Across four models tested on MNIST, the CNN achieves the best cross-validation accuracy, followed closely by the RBF SVM, the SNN, and the Linear SVM. The CNN's advantage stems from its ability to exploit the 2D spatial structure of pixel images through learned convolutional filters. Among classical methods, the RBF SVM remains competitive and requires no GPU. PCA dimensionality reduction provides a significant speed-up for the SVM models with negligible accuracy loss. Future work includes deeper CNN architectures with batch normalization, data augmentation, and exploring the trade-off between model complexity and inference latency.
 
-\begin{ack}
-This project was completed as part of E2 236: Foundations of Machine Learning at the Indian Institute of Science.
-\end{ack}
+% \begin{ack}
+% This project was completed as part of E2 236: Foundations of Machine Learning at the Indian Institute of Science.
+% \end{ack}
 
 \section*{References}
 {\small
