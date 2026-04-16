@@ -1,0 +1,10 @@
+Todos:
+1. Exploratory  data  analysis  to  understand  the  dataset  and  features
+2. Feature  processing  and  engineering  to  clean  your  dataset  and  extract  more  meaningful information
+3. Choose and implement at least two machine learning methods
+4. results on the appropriate metrics of choice, cross-validation steps
+5. Analyze the models via an ablation study, rationale for choosing such an ablation study
+6. Tune hyperparameters
+
+
+784 shape - [0,255] values

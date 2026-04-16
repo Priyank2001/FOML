@@ -18,15 +18,16 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction and Dataset}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{1}{section.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class.}}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:dist}{{1}{2}{Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class}{figure.1}{}}
-\newlabel{fig:samples}{{1}{2}{Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces PCA reconstruction of a single digit at variance thresholds 80\%, 85\%, 90\%, and 95\% (left to right), alongside the original 784-pixel image. Component counts are 43, 72, 105, and 154 respectively.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:pca_recon}{{1}{2}{PCA reconstruction of a single digit at variance thresholds 80\%, 85\%, 90\%, and 95\% (left to right), alongside the original 784-pixel image. Component counts are 43, 72, 105, and 154 respectively}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:dist}{{2}{2}{Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class}{figure.2}{}}
+\newlabel{fig:samples}{{2}{2}{Left: class distribution in training set (balanced, $\approx 4{,}200$ samples per digit). Right: one example image per digit class}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Results and Ablation Study}{2}{section.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Left: single-split accuracy for all four models (bar chart); the dashed red line shows training time for the two SVM models only. Right: cross-validation accuracy distribution across folds (SVM: 5-fold; SNN/CNN: 3-fold).}}{2}{figure.2}\protected@file@percent }
-\newlabel{fig:results}{{2}{2}{Left: single-split accuracy for all four models (bar chart); the dashed red line shows training time for the two SVM models only. Right: cross-validation accuracy distribution across folds (SVM: 5-fold; SNN/CNN: 3-fold)}{figure.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Cross-validation accuracy on MNIST.}}{2}{table.1}\protected@file@percent }
 \newlabel{tab:results}{{1}{2}{Cross-validation accuracy on MNIST}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Left: single-split accuracy for all four models (bar chart); the dashed red line shows training time for the two SVM models only. Right: cross-validation accuracy distribution across folds (SVM: 5-fold; SNN/CNN: 3-fold).}}{3}{figure.3}\protected@file@percent }
+\newlabel{fig:results}{{3}{3}{Left: single-split accuracy for all four models (bar chart); the dashed red line shows training time for the two SVM models only. Right: cross-validation accuracy distribution across folds (SVM: 5-fold; SNN/CNN: 3-fold)}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Effect of PCA variance threshold on RBF SVM (80/20 single split).}}{3}{table.2}\protected@file@percent }
+\newlabel{tab:pca_sweep}{{2}{3}{Effect of PCA variance threshold on RBF SVM (80/20 single split)}{table.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Conclusion}{3}{section.4}\protected@file@percent }
-\newlabel{lecun1998}{{4}{3}{References}{section*.1}{}}
-\newlabel{sklearn}{{4}{3}{References}{section*.1}{}}
-\newlabel{pytorch}{{4}{3}{References}{section*.1}{}}

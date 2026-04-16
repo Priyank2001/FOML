@@ -48,8 +48,15 @@ The MNIST dataset
 
 \textbf{Preprocessing.}
 Raw pixel intensities (0--255) are normalized to $[0,1]$. We then apply PCA
-% ~\cite{sklearn} 
- to reduce the $784$-dimensional representation to $154$ components, retaining $95\%$ of the total variance. This cuts memory and compute requirements by $5\times$ while preserving discriminative structure. Figure~\ref{fig:dist} shows the balanced class distribution ($\approx4{,}200$ samples per digit), and Figure~\ref{fig:samples} shows one representative image per class.
+% ~\cite{sklearn}
+to reduce the $784$-dimensional representation, retaining a target fraction of the total variance. Figure~\ref{fig:pca_recon} shows reconstructions of the same digit at four variance thresholds (80\%, 85\%, 90\%, 95\%), corresponding to 43, 72, 105, and 154 components respectively. Even at 80\% variance the digit is recognisable; by 95\% the reconstruction is nearly indistinguishable from the original. Unless stated otherwise, all classical models use the 95\%-threshold ($784\to154$ components), providing a $5\times$ reduction in dimensionality. Figure~\ref{fig:dist} shows the balanced class distribution ($\approx4{,}200$ samples per digit), and Figure~\ref{fig:samples} shows one representative image per class.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{figures/pca_reconstruction_variance.pdf}
+  \caption{PCA reconstruction of a single digit at variance thresholds 80\%, 85\%, 90\%, and 95\% (left to right), alongside the original 784-pixel image. Component counts are 43, 72, 105, and 154 respectively.}
+  \label{fig:pca_recon}
+\end{figure}
 
 \begin{figure}[h]
   \centering
@@ -91,8 +98,10 @@ We implement a CNN in PyTorch that reshapes the flat 784-dim input back to $1\ti
 
 Table~\ref{tab:results} and Figure~\ref{fig:results} summarize performance. The RBF SVM is the top classical model, significantly outperforming the Linear SVM (gap $\approx5$~pp). This empirically confirms that the digit classes are \emph{not} linearly separable in PCA space, motivating the non-linear kernel. Among deep learning models, the CNN outperforms the SNN, demonstrating the benefit of exploiting the spatial structure of pixel grids via learned convolutional filters.
 
-\textbf{Ablation: PCA components.}
-Training RBF SVM with all 784 features (no PCA) gives nearly identical accuracy but requires $\approx3\times$ more training time, confirming that the 95\%-variance PCA threshold is a practical sweet spot.
+\textbf{Ablation: PCA variance threshold.}
+We sweep the PCA variance threshold over $\{0.80,\,0.85,\,0.90,\,0.95\}$ and re-train the RBF SVM at each setting (same $C{=}10$, \texttt{gamma='scale'}, 80/20 split). The results are summarised in Table~\ref{tab:pca_sweep}. Accuracy increases monotonically with the threshold, but the gains diminish rapidly: moving from 0.80 to 0.95 adds only $\approx$0.3 percentage points while more than tripling the component count (43$\to$154) and roughly doubling training time. The 95\% threshold therefore represents a practical sweet spot between information retention and computational cost. Qualitatively, Figure~\ref{fig:pca_recon} confirms that even the 80\%-reconstruction preserves the overall digit shape, explaining why accuracy degrades only modestly at lower thresholds.
+
+\input{pca_sweep_table.tex}
 
 \textbf{Ablation: kernel choice.}
 Switching from RBF to a linear kernel drops cross-validation accuracy by roughly 5 percentage points, directly attributable to the non-linear digit boundaries in pixel space.
@@ -108,13 +117,13 @@ Across four models tested on MNIST, the CNN achieves the best cross-validation a
 % This project was completed as part of E2 236: Foundations of Machine Learning at the Indian Institute of Science.
 % \end{ack}
 
-\section*{References}
-{\small
-[1] \label{lecun1998} LeCun, Y., Bottou, L., Bengio, Y., \& Haffner, P.\ (1998) Gradient-based learning applied to document recognition. {\it Proceedings of the IEEE}, 86(11):2278--2324.
+% \section*{References}
+% {\small
+% [1] \label{lecun1998} LeCun, Y., Bottou, L., Bengio, Y., \& Haffner, P.\ (1998) Gradient-based learning applied to document recognition. {\it Proceedings of the IEEE}, 86(11):2278--2324.
 
-[2] \label{sklearn} Pedregosa, F., et al.\ (2011) Scikit-learn: Machine learning in Python. {\it Journal of Machine Learning Research}, 12:2825--2830.
+% [2] \label{sklearn} Pedregosa, F., et al.\ (2011) Scikit-learn: Machine learning in Python. {\it Journal of Machine Learning Research}, 12:2825--2830.
 
-[3] \label{pytorch} Paszke, A., et al.\ (2019) PyTorch: An imperative style, high-performance deep learning library. {\it Advances in Neural Information Processing Systems 32}.
-}
+% [3] \label{pytorch} Paszke, A., et al.\ (2019) PyTorch: An imperative style, high-performance deep learning library. {\it Advances in Neural Information Processing Systems 32}.
+% }
 
 \end{document}
